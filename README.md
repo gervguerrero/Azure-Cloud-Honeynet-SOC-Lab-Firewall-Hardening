@@ -1,6 +1,12 @@
 # 🔥🔒 Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening 🔒🔥
 
-This page showcases hardening Microsoft Azure Firewalls in an Incident Response process. This builds off my repository [Azure-Cloud-Honeynet-SOC-Lab](https://github.com/gervguerrero/Azure-Cloud-SOC-Lab/tree/main), and [Azure-Cloud-SOC-Lab-Incident-Response-Investigation](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Incident-Response-Investigation/edit/main/README.md)
+This page showcases hardening Microsoft Azure Firewalls in an Incident Response process. 
+
+This builds off my repositories: 
+
+[Azure-Cloud-Honeynet-SOC-Lab](https://github.com/gervguerrero/Azure-Cloud-SOC-Lab/tree/main) 
+
+[Azure-Cloud-SOC-Lab-Incident-Response-Investigation](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Incident-Response-Investigation/edit/main/README.md)
 
 ![final map](https://github.com/gervguerrero/Azure-Cloud-SOC-Lab-Incident-Response/assets/140366635/c1ef655b-4ebf-4b86-b7d7-3060246645a6)
 
@@ -20,13 +26,13 @@ The Azure cloud environment was left wide open without any real protection from 
 4. Operating System specific firewalls to each virtual machine and firewall rules specific to the Blob Storage/Key Vault
 5. Private Endpoint Protection for Blob Storage/Key Vault (Not configured, not shown on map.)
 
-This page will demonstrate configuring each security control and how it can prevent the brute force incident from occuring. 
+This page will demonstrate configuring each security control and how it can prevent the brute force incident from occurring. 
 
  <br/> 
 
 # 1. Azure Firewall 
 ## Threat Actor Access Before Controls (Azure Firewall)
-Starting with the most external security control, introducing and configuring an Azure Firewall properly can prevent unwanted remote deskop protocol (RDP) requests to the Azure network.
+Starting with the most external security control, introducing and configuring an Azure Firewall properly can prevent unwanted remote desktop protocol (RDP) requests to the Azure network.
 
 Here we can see evidence without this security control, that any external IP can perform RDP into our Windows 10 virtual machine, as well as ping the machine:
 
@@ -46,14 +52,14 @@ First we create a route table:
 
 Next we have to associate the route table to the virtual subnet our target vm is in. (Windows 10 VM)
 
-In larger environments, we’ll have to attach the route table to any subnet that has clients that needs to access the internet through the firewall. 
+In larger environments, we’ll have to attach the route table to any subnet that has clients that need to access the internet through the firewall. 
 
 This is us associating the subnet our target vm (or client workstations) are in:
 ![image](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/54b254c8-9b5c-47c9-85a7-36d975b97ba1)
 
  <br/> 
 
-Next is setting a default route of 0.0.0.0/0 and setting next hop address of the PRIVATE IP of our firewall.
+Next is setting a default route of 0.0.0.0/0 and setting a next hop address of the PRIVATE IP of our firewall.
 ![image](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/fb54d557-6b70-42d3-8746-71cfbb2ee22b)
 
  <br/> 
@@ -127,7 +133,7 @@ Whether the other 4 security controls are operational or not, the Azure Firewall
 # 2. Network Service Group (NSG) for Whole Virtual Network
 
 ## Threat Actor Access Before Controls (NSG for VNET)
-Moving internal to the Azure network, configuring a Network Service Group (NSG) for the entire virtual network can prevent unwanted remote deskop protocol (RDP) requests. Setting the inbound and outbound rules is similar, but much more simple than the Azure Firewall.  
+Moving internal to the Azure network, configuring a Network Service Group (NSG) for the entire virtual network can prevent unwanted remote destkop protocol (RDP) requests. Setting the inbound and outbound rules is similar, but much more simple than the Azure Firewall.  
 
 Here is the NSG that allows any inbound traffic from the public internet that allows attackers to brute force our Windows machine:
 ![image](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/4b469de6-1eab-4cd1-9c6b-1143fc741636)
@@ -240,7 +246,7 @@ Here we can see evidence without this security control, that any external IP can
 <br/>
 <br/>
 
-Here is the Blob Storage Firewall/Networking rule that allows public acccess: (Keyvault has same setting) 
+Here is the Blob Storage Firewall/Networking rule that allows public access: (Keyvault has same setting) 
 
 ![image](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/0815c9cb-100f-4bcc-a556-8e8d27f4d38a)
 
@@ -352,7 +358,7 @@ Here is the Private Endpoint access from inside the Azure network. Note the Priv
 
 <br/>
 
-Disabling public access and creativing Private Endpoints results in a much more secure Azure resources:
+Disabling public access and creating Private Endpoints results in a much more secure Azure resources:
 
 ![Secured Network Asset Firewall](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/39b7b720-df6a-4f0d-aeee-82349c1d8657)
 
@@ -363,7 +369,7 @@ Disabling public access and creativing Private Endpoints results in a much more 
 
 ![Secured Network Azure firewall](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/e3943ae0-3887-4f3e-8b6c-041a293a2b5e)
 
-Here we have demonstrated 5 layers of firewall protection in a Microsoft Azure Cloud environmnet following NIST's 800-53 R5 SC-7 Boundary Protection guidelines, effectively hardening the Azure network to prevent brute force attempts from happening and disabling public access of Azure Storage and Azure Key Vault assets. We've shown how each control configured alone can still prevent unwanted access. Using all 5 of these controls together bolster the network security posture and prevent the brute force incident we explored earlier.
+Here we have demonstrated 5 layers of firewall protection in a Microsoft Azure Cloud environment following NIST's 800-53 R5 SC-7 Boundary Protection guidelines, effectively hardening the Azure network to prevent brute force attempts from happening and disabling public access of Azure Storage and Azure Key Vault assets. We've shown how each control configured alone can still prevent unwanted access. Using all 5 of these controls together bolster the network security posture and prevent the brute force incident we explored earlier.
 
 **To view the brute force incident that led to hardening the network, click here:**
 
