@@ -295,3 +295,81 @@ Here is what the network looks like blocking unauthorized traffic from the inter
 <br/> 
 
 # 5. Private Endpoint Protection for Blob Storage/Key Vault
+## Threat Actor Access Before Controls (Private Endpoints)
+
+Without any configuration for Private Endpoints for our Azure resources (Blob Storage/Key Vault), any threat actor who would be able to view the resources from any public IP space. 
+
+Allowing public access:
+
+![image](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/94d2c693-56f7-4537-ac1c-cc8b616e667c)
+
+No Private Endpoint Configured:
+
+![image](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/33462a6b-9f44-4af6-b766-98069bb401b2)
+
+Here is what the threat actor's access to the resources looks like from an IP outside of the Azure network. They can view the Key vault Secrets and see the sensitive passwords:
+
+![image](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/3d514ce5-6209-49cd-90ac-6db376ee8290)
+
+<br/> 
+
+ ## Configuring Controls (Private Endpoints)
+
+ Here we disable Public Access for the Key Vault:
+ 
+ ![image](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/391220f8-1764-4d24-9461-e3561098c909)
+
+Here we configure a Private Endpoint to only allow access to the resources from INSIDE the Azure network:
+
+![image](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/d9e447ec-ba77-4c19-86a5-107377f7d73e)
+
+![image](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/b0a81513-871f-47fd-b694-61f4bafa6a20)
+
+![image](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/6baac2de-42fc-4ad3-8bbf-4384f000d90b)
+
+![image](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/02632b7b-9393-485c-bde5-b86781df1e51)
+
+<br/>
+
+ ## Threat Actor Access After Controls (Private Endpoints)
+
+Here is a threat actor's access to the Key Vault after enabling these controls. Note that the nslookup shown resolves to a Public IP address only. The Private Endpoint control only allows access from a Private IP inside the Azure network, which is why Azure states Public access is disabled:
+
+![image](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/72e7b254-721c-4c7a-9190-482250ae8ab4)
+
+This is what the Private Endpoint access looks like from INSIDE the Azure network. Note the Private IP returned in the nslookup:
+
+![image](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/3b008ee1-33c8-45f3-af76-2fcc8efac227)
+
+
+Here is the threat actor's access to the Blob Storage after enabling the same controls:
+
+![image](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/c8d2b968-0193-4fa9-8617-585a9cfb05bd)
+
+Here is the Private Endpoint access from inside the Azure network. Note the Private IP returned in the nslookup:
+
+![image](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/294baa8a-d749-4560-bb7e-801341b69370)
+
+<br/>
+
+Disabling public access and creativing Private Endpoints results in a much more secure Azure resources:
+
+![Secured Network Asset Firewall](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/39b7b720-df6a-4f0d-aeee-82349c1d8657)
+
+<br/>
+<br/>
+
+# Conclusion
+
+![Secured Network Azure firewall](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/e3943ae0-3887-4f3e-8b6c-041a293a2b5e)
+
+Here we have demonstrated 5 layers of firewall protection in a Microsoft Azure Cloud environmnet following NIST's 800-53 R5 SC-7 Boundary Protection guidelines, effectively hardening the Azure network to prevent brute force attempts from happening and disabling public access of Azure Storage and Azure Key Vault assets. We've shown how each control configured alone can still prevent unwanted access. Using all 5 of these controls together bolster the network security posture and prevent the brute force incident we explored earlier.
+
+**To view the brute force incident that led to hardening the network, click here:**
+
+[Azure-Cloud-Honeynet-SOC-Lab-Incident-Response-Investigation](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Incident-Response-Investigation)
+
+**To view the results of introducing these security controls and the overall Honeynet/SOC lab, click here:** 
+
+[Azure-Cloud-Honeynet-SOC-Lab](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab)
+
