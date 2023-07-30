@@ -244,3 +244,54 @@ Here is the Blob Storage Firewall/Networking rule that allows public acccess: (K
 
 ![image](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/0815c9cb-100f-4bcc-a556-8e8d27f4d38a)
 
+<br/>
+
+## Configuring Controls (OS Firewalls/Resource Firewalls)
+
+This is hardening the Windows 10 Firewall to only accept remote inbound connections from 1 specific IP:
+
+![image](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/ec9c2425-21d9-439d-beef-4b889030fb5a)
+![OSfw3](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/c52a9d5d-a5c3-48ac-983c-48d31f1c360a)
+
+<br/>
+
+This is hardening the Ubuntu UFW Firewall to only accept remote inbound connections from 1 specific IP:
+
+<img width="381" alt="Ubuntufw2" src="https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/0faf076f-7da1-46d2-b594-1debeae3400b">
+
+![tempsnip2](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/b958cbdd-8770-4073-982d-09447bf318e0)
+
+![tempsnip3](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/4cd4c258-a008-40e3-8e07-e3cb5bbb4855)
+
+<br/>
+
+This is hardening the Blob Storage/Key Vault access by disabling public access from the the internet: **(Note that this is to be combined with Private Endpoints which will be discussed next.)**
+
+<img width="702" alt="OSfw6" src="https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/715b86f9-afc8-4f70-b255-0c548a77e227">
+
+<br/>
+
+## Threat Actor Access After Controls (OS Firewalls/Resource Firewalls)
+
+After implementing these OS Firewall/Resource Firewall controls, we can see that a threat actor's previous access to the Windows 10 VM has been blocked, effectively eliminating the RDP brute force seen previously:
+
+![OSfw4](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/2ac554ad-11f2-439c-8f74-19085f9f8728)
+
+![OSfw5](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/2b62ae10-9998-4c80-919b-d7fb15a6f517)
+
+<br/>
+
+The same access control has been applied to the Ubuntu VM:
+
+![image](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/049d769a-703e-4ce5-aba3-945b0195ecfc)
+
+<br/>
+
+Here is what the network looks like blocking unauthorized traffic from the internet using OS Firewalls/Resource Firewalls: 
+
+![Secured Network Asset Firewall](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/d279b32a-47b4-492b-986d-468c671ec605)
+
+<br/> 
+<br/> 
+
+# 5. Private Endpoint Protection for Blob Storage/Key Vault
