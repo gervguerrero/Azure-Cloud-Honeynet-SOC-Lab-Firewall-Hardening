@@ -157,6 +157,7 @@ After implementing these NGS for VNET controls, we can see that a threat actor's
  <br/> 
 
 Here is what the network looks like blocking unauthorized traffic from the internet using a Network Service Group for the entire Virtual Network:
+
 ![Secured Network Vnet NSG](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/61d5ab64-04ab-4453-89c8-82f14f7c0c9a)
 
 
@@ -191,5 +192,12 @@ After implementing these NGS for VMs controls, we can see that a threat actor's 
 
 ![VMfw5](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/deec2a0c-af13-462a-840a-0a106ee6531f)
 ![VMfw6](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/4b014f2c-4fad-4553-9021-48d043251231)
+
+<br/> 
+
+Here is what the network looks like blocking unauthorized traffic from the internet using a Network Service Group for Virtual Machines:
+
+![Secured Network VM NSG](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/25a65c53-ee46-4ec6-837c-95723f1cdf7d)
+
 
 
