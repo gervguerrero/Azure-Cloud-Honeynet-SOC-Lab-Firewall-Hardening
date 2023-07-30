@@ -21,3 +21,13 @@ The Azure cloud environment was left wide open without any real protection from 
 5. Private Endpoint Protection for Blob Storage/Key Vault (Not configured, not shown on map.)
 
 This page will demonstrate configuring each security control and how it can prevent the brute force incident from occuring. 
+
+ <br/> 
+
+# Configuring Azure Firewall 
+
+Starting with the most external security control, introducing and configuring an Azure Firewall properly can prevent unwanted remote deskop protocol (RDP) requests to the Azure network.
+
+Here we can see evidence that any external IP can perform RDP into our Windows 10 virtual machine:
+![image](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/a69ca949-e7d4-4d8b-918b-99d6c8884b64)
+
