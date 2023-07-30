@@ -24,10 +24,31 @@ This page will demonstrate configuring each security control and how it can prev
 
  <br/> 
 
-# Configuring Azure Firewall 
-
+# 1. Azure Firewall 
+### Threat Actor Access Before Controls
 Starting with the most external security control, introducing and configuring an Azure Firewall properly can prevent unwanted remote deskop protocol (RDP) requests to the Azure network.
 
-Here we can see evidence that any external IP can perform RDP into our Windows 10 virtual machine:
+Here we can see evidence without this security control, that any external IP can perform RDP into our Windows 10 virtual machine, as well as ping the machine:
+
 ![image](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/a69ca949-e7d4-4d8b-918b-99d6c8884b64)
+![image](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/2f948b45-26d5-448c-a78d-08c0e92d532c)
+
+### Configuring Controls
+
+When introducing an Azure Firewall to the network, a default route needs to be made to route the internal traffic through the firewall to be filtered and inspected. 
+
+First we create a route table:
+
+![image](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/095374c0-000f-45ba-af04-715d2edfdfb2)
+![image](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/df7b958b-fffd-49ea-b5e3-f9ee019724ce)
+
+
+Next we have to associate the route table to the virtual subnet our target vm is in. (Windows 10 VM)
+
+In larger environments, we’ll have to attach the route table to any subnet that has clients that needs to access the internet through the firewall. (but don’t apply the routing table to the azure firewall, or azure firewall management subnet. Just the subnet with our target VM)
+
+This is us associating the subnet our target vm (or client workstations) are in:
+
+
+
 
