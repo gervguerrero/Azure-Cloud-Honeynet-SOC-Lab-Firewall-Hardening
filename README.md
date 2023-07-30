@@ -199,5 +199,15 @@ Here is what the network looks like blocking unauthorized traffic from the inter
 
 ![Secured Network VM NSG](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/25a65c53-ee46-4ec6-837c-95723f1cdf7d)
 
+<br/> 
+<br/> 
 
+# 4. Operating System Firewalls and Blob Storage/Key Vault Firewalls
+## Threat Actor Access Before Controls (OS Firewalls/Resource Firewalls)
+In the Operating System itself for each virtual machine, there are usually firewall applications that are native and can be activated to block any unwanted traffic. 
 
+**Windows 10:** Windows Firewall
+
+**Ubuntu:** UFW Firewall
+
+Meanwhile, both the Blob Storage and Key Vault have firewall/network settings that can be changed in the Azure portal that disable public access to these resources. 
