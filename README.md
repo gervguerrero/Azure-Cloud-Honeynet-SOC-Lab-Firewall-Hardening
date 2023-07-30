@@ -130,7 +130,8 @@ Whether the other 4 security controls are operational or not, the Azure Firewall
 Moving internal to the Azure network, configuring a Network Service Group (NSG) for the entire virtual network can prevent unwanted remote deskop protocol (RDP) requests. Setting the inbound and outbound rules is similar, but much more simple than the Azure Firewall.  
 
 Here is the NSG that allows any inbound traffic from the public internet that allows attackers to brute force our Windows machine:
-![Subnetfw1](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/4e771551-fce4-4b89-a37a-b36f73c11071)
+![image](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/4b469de6-1eab-4cd1-9c6b-1143fc741636)
+
 
  <br/> 
 
