@@ -45,9 +45,22 @@ First we create a route table:
 
 Next we have to associate the route table to the virtual subnet our target vm is in. (Windows 10 VM)
 
-In larger environments, we’ll have to attach the route table to any subnet that has clients that needs to access the internet through the firewall. (but don’t apply the routing table to the azure firewall, or azure firewall management subnet. Just the subnet with our target VM)
+In larger environments, we’ll have to attach the route table to any subnet that has clients that needs to access the internet through the firewall. 
 
 This is us associating the subnet our target vm (or client workstations) are in:
+![image](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/54b254c8-9b5c-47c9-85a7-36d975b97ba1)
+
+Next is setting a default route of 0.0.0.0/0 and setting next hop address of the PRIVATE IP of our firewall.
+![image](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/fb54d557-6b70-42d3-8746-71cfbb2ee22b)
+
+This default route of 0.0.0.0/0 tells the virtual network to send any traffic that it doesn’t have a route for to the firewall:
+![image](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/fe99795a-33d3-43f2-8b8d-a8e573d95579)
+
+Next is configuring DNAT on the Azure firewall. (Destination Network Address Translation) DNAT translates the destination IP address and/or port of incoming traffic before it reaches the destination of the requested resources in the Azure virtual network. 
+![image](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/44074ea1-6d3a-4c31-b967-2ab46a6939a0)
+
+
+
 
 
 
