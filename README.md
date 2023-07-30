@@ -170,3 +170,26 @@ The next internal security control is also a Network Service Group, but it is sp
 
 Here is the VM NSG that allows any inbound traffic from the public internet that allows attackers to brute force our Windows machine:
 ![image](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/3483826e-d855-458f-b481-7c50a612d0fe)
+
+ <br/> 
+
+Here we can see evidence without this security control, that any external IP can perform RDP into our Windows 10 virtual machine, as well as ping the machine:
+![VMfw2](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/4900fc97-dc22-440d-9e8a-8ead177401a3)
+![VMfw3](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/85e5faf5-c222-4fee-a005-7cbab47ddb32)
+
+<br/> 
+
+## Configuring Controls (NSG for VMs)
+
+Just like the previous Network Service Group, we can change the settings to only accept inbound traffic from 1 specific IP address:
+![image](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/a56b3641-ed44-4922-b2f9-2e313af902fe)
+
+<br/> 
+
+## Threat Actor Access After Controls (NSG for VMs)
+After implementing these NGS for VMs controls, we can see that a threat actor's previous access to the Windows 10 VM has been blocked, effectively eliminating the RDP brute force seen previously:
+
+![VMfw5](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/deec2a0c-af13-462a-840a-0a106ee6531f)
+![VMfw6](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/4b014f2c-4fad-4553-9021-48d043251231)
+
+
