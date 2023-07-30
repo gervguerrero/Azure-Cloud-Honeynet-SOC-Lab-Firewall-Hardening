@@ -211,3 +211,35 @@ In the Operating System itself for each virtual machine, there are usually firew
 **Ubuntu:** UFW Firewall
 
 Meanwhile, both the Blob Storage and Key Vault have firewall/network settings that can be changed in the Azure portal that disable public access to these resources. 
+
+Here is the open Windows 10 Firewall that allows any inbound traffic from the public internet that allows attackers to brute force our Windows machine:
+
+![OSfw0](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/d0d81d37-1f7f-4e0e-be17-bf8522d2e05b)
+
+<br/> 
+
+Here we can see evidence without this security control, that any external IP can perform RDP into our Windows 10 virtual machine, as well as ping the machine:
+
+![OSfw1](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/947e2622-f873-4842-9b36-7443a6ed439c)
+![OSfw2](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/8a5079bc-f34d-4c30-b6e9-06764161f25f)
+
+
+<br/> 
+
+Here is the Ubuntu Firewall that is inactive and not configured that allows anyone to SSH in:
+
+<img width="268" alt="Ubuntufw1" src="https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/6aba298a-e3fc-49ec-831b-064e51b3b724">
+
+<br/> 
+<br/> 
+
+Here we can see evidence without this security control, that any external IP can perform SSH into our Ubuntu virtual machine:
+![tempsnip](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/09f3bd49-9a59-411b-8dd3-9387022426e3)
+
+<br/>
+<br/>
+
+Here is the Blob Storage Firewall/Networking rule that allows public acccess: (Keyvault has same setting) 
+
+![image](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening/assets/140366635/0815c9cb-100f-4bcc-a556-8e8d27f4d38a)
+
