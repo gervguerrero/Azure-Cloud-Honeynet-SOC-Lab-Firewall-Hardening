@@ -1,4 +1,4 @@
-# 🔥 Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening 🔥
+# 🔥Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening🔥
 
 This page showcases hardening Microsoft Azure Firewalls in an Incident Response process. 
 
